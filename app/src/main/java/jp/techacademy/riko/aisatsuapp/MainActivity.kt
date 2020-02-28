@@ -1,6 +1,8 @@
 package jp.techacademy.riko.aisatsuapp
 
 import android.app.TimePickerDialog
+import android.app.TimePickerDialog.OnTimeSetListener
+import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -30,16 +32,17 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
             },
             2, 0, true
         )
-
-        for (i in 2 until 10) {
-            textView.text = "おはよう"
-        }
-        for (i in 10 until 18) {
-            textView.text = "こんにちは"
-        }
-        for (i in 18 until 2) {
-            textView.text = "こんばんは"
-        }
+            TimePickerDialog.setPositiveButton("OK"){dialog, which ->
+                for (i in 2 until 10) {
+                    textView.text = "おはよう"
+                }
+                for (i in 10 until 18) {
+                    textView.text = "こんにちは"
+                }
+                for (i in 18 until 2) {
+                    textView.text = "こんばんは"
+                }
+            }
         timePickerDialog.show()
     }
 }
