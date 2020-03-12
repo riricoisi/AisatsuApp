@@ -28,21 +28,19 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
         val timePickerDialog = TimePickerDialog(
             this,
             TimePickerDialog.OnTimeSetListener { view, hour, minute ->
-                Log.d("UI-PARTS", "$hour:$minute")
+
+                if (hour in 2 until 10) {
+                    textView.text = "おはよう"
+                }
+                else if (hour in 10 until 18) {
+                    textView.text = "こんにちは"
+                }
+                else {
+                    textView.text = "こんばんは"
+                }
             },
             2, 0, true
         )
-            TimePickerDialog.setPositiveButton("OK"){dialog, which ->
-                for (i in 2 until 10) {
-                    textView.text = "おはよう"
-                }
-                for (i in 10 until 18) {
-                    textView.text = "こんにちは"
-                }
-                for (i in 18 until 2) {
-                    textView.text = "こんばんは"
-                }
-            }
         timePickerDialog.show()
     }
 }
